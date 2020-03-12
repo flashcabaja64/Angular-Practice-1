@@ -15,7 +15,9 @@ export class ServersComponent implements OnInit {
 
   allowNewServer = false;
   serverCreationStatus = 'No server was created';
-  serverName = '';
+  serverName = 'TestServer';
+  userName= '';
+  serverCreated = false;
 
   constructor() { 
     setTimeout(() => {
@@ -27,11 +29,12 @@ export class ServersComponent implements OnInit {
   }
 
   onCreateServer() {
-    this.serverCreationStatus = 'Server was created!';
+    this.serverCreated = true;
+    this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
   }
 
   onUpdateServerName(event: Event) {
-    //this.serverName = event.target.value;
+    //this.serverName = event.target.value; //only if (event: any)
     //The below HTMLInputElement informs TS the target.value is a type input element
     this.serverName = (<HTMLInputElement>event.target).value;
   }
