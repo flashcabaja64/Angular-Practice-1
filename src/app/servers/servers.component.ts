@@ -18,6 +18,13 @@ export class ServersComponent implements OnInit {
   serverName = 'TestServer';
   userName= '';
   serverCreated = false;
+  servers = ['TestServer', 'TestServer 2'];
+  
+  // #2 Assignment
+  password='Best PSWD ever!';
+  passwordToggle = false;
+  passwords = [];
+  secret = ''
 
   constructor() { 
     setTimeout(() => {
@@ -30,6 +37,7 @@ export class ServersComponent implements OnInit {
 
   onCreateServer() {
     this.serverCreated = true;
+    this.servers.push(this.serverName)
     this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
   }
 
@@ -38,4 +46,11 @@ export class ServersComponent implements OnInit {
     //The below HTMLInputElement informs TS the target.value is a type input element
     this.serverName = (<HTMLInputElement>event.target).value;
   }
+
+  onPasswordUpdate() {
+    this.passwordToggle = !this.passwordToggle;
+    this.passwords.push(new Date())
+  }
+
+
 }
